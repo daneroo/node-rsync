@@ -39,9 +39,10 @@ function populatelevels () {
 //  Helper
 //
 Helper = function() {
+  // DL changed path from ../ to ./
   this.allow = [
-      '../lib/files/client.txt'
-    , '../lib/files/server.txt'  
+      './lib/files/client.txt'
+    , './lib/files/server.txt'  
   ];
   this.levels = populatelevels();
 };
