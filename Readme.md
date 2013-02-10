@@ -1,7 +1,13 @@
-
 # node-rsync
 
   rsync implemented in node over http
+
+  forked from [ttezel/anchor](https://github.com/ttezel/anchor)
+
+  
+## Working:
+
+		node test/myrsync.js
 
 ## License 
 

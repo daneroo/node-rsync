@@ -86,7 +86,7 @@ Helper.prototype = {
       , min = level === 0 ? 1 : this.levels[level - 1]
       , max = this.levels[level];
         
-    var size = randRange(min, max)
+    var size = randRange(/*min*/max, max)
       , contents = randString(size);
     
     fs.writeFileSync(path, contents);
@@ -99,13 +99,16 @@ Helper.prototype = {
       , raw = fs.readFileSync(oldpath);
 
     console.log('old filesize: %d Bytes'.bold, raw.length);
-    
+    // console.log('old=|',raw.toString().slice(0,50),(raw.length>50)?'...':'','|');
+
     var old = raw.toString()
-      , modsize = rand(old.length)
-      , numChanges = rand(old.length/2);
+      // , modsize = rand(old.length)
+      , modsize = rand(old.length/4)
+      // , numChanges = rand(old.length/2);
+      , numChanges = randRange(2,10);
    
     if(mode > 1) {
-      console.log('# of changes: %d'.cyan, numChanges);
+      console.log('# of changes: %d sz: %d'.cyan, numChanges,modsize);
     }
    
     var modified = old;
@@ -138,6 +141,8 @@ Helper.prototype = {
 
     raw = new Buffer(modified);
     console.log('new filesize: %d Bytes'.bold, raw.length);
+    // console.log('new=|',raw.toString().slice(0,50),(raw.length>50)?'...':'','|');
+
     
     fs.writeFileSync(newpath, raw);
   

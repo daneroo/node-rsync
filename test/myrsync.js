@@ -20,6 +20,7 @@ function runRsync(blocksize, callback) {
 
     // console.log('sync',sync);
     sync.checksum('./lib/files/server.txt', function (err, results) {
+
         if(err) { callback(err); }
         //console.log('checksums',results);
         var t1 = Date.now();
@@ -49,14 +50,15 @@ function runRsync(blocksize, callback) {
 //  test batch creation
 //
 var tests = vows.describe('Rsync tests')
-  , numlevels = 6 //helper.levels.length
-  , numModes = modes.length
+  , numlevels = helper.levels.length
+  , numModes =  modes.length
   , blk = 750;
 
+console.log("numlevels:".red,numlevels);
 for(var level = 0; level < numlevels; level++) {
-  console.log('level',level);
-  for(mode = 0; mode < numModes*0+1; mode++) {
-    console.log('mode',mode,modes[mode]);
+  // console.log('level',level);
+  for(mode = 0; mode < numModes; mode++) {
+    // console.log('mode',mode,modes[mode]);
     (function() {    
       var lvl = level
         , m = mode;
